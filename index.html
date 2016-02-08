@@ -25,6 +25,12 @@
         <h1>Welcome {{member.username}}</h1>
         
         
+        <ul>
+            <li ng-repeat="item in itemList">{{item}}</li>
+        </ul>
+        
+        <input type="text" ng-model="newItem"/>
+        <button ng-click="addItem()">ADD ITEM</button>
         
     </div>
 

@@ -45,4 +45,15 @@ app.controller('AuthController', function($scope, FBREF){
         
         db.authWithPassword(ac.user, handleDBResponse)
     }
+    
+    $scope.itemList = [];
+    $scope.addItem = function(){
+        if(!$scope.newItem){
+            return
+        }
+        $scope.itemList.push($scope.newItem);
+        $scope.newItem = ''
+    }
+    
+    
 })
