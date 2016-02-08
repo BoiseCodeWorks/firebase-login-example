@@ -6,30 +6,37 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
-<body>
-    <form ng-submit="submitForm(user)"  ng-controller="AuthController">
+<body ng-controller="AuthController as ac">
+    <form ng-submit="submitForm()" ng-show="!member">
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" ng-model="user.email">
+            <input type="email" ng-model="ac.user.email">
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
-            <input type="password" ng-model="user.password">
+            <input type="password" ng-model="ac.user.password">
         </div>
         <div class="button-group">
             <button type="submit" ng-click="submitForm = login">Login</button>
             <button type="submit" ng-click="submitForm = register">Register</button>
         </div>
     </form>
+    <div ng-show="member">
+        <h1>Welcome {{member.username}}</h1>
+        
+        
+        
+    </div>
 
-<!--LOAD ANGULAR-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 
-<!--LOAD FIREBASE-->
-<script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <!--LOAD ANGULAR-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 
-<!--START APP-->
-<script src="app/app.js"></script>
+    <!--LOAD FIREBASE-->
+    <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+
+    <!--START APP-->
+    <script src="app/app.js"></script>
 
 </body>
 
