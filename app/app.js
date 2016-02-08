@@ -1,11 +1,14 @@
 /* global Firebase */
-var app = angular.module('login', []);
+var app = angular.module('login', [
+    'firebase'
+]);
 
 app.constant('FBREF', 'https://stackunderflow.firebaseio.com/')
 
-app.controller('AuthController', function($scope, FBREF){
+app.controller('AuthController', function($scope, FBREF, $firebaseArray){
     var ac = this;
     var db = new Firebase(FBREF);
+    $scope.itemList = $firebaseArray(new Firebase(FBREF + 'items'));
     $scope.member;
         
     function handleDBResponse (err, authData){
@@ -46,12 +49,14 @@ app.controller('AuthController', function($scope, FBREF){
         db.authWithPassword(ac.user, handleDBResponse)
     }
     
-    $scope.itemList = [];
+
     $scope.addItem = function(){
+        debugger;
         if(!$scope.newItem){
             return
         }
-        $scope.itemList.push($scope.newItem);
+        
+        $scope.itemList.push({body: $scope.newItem});
         $scope.newItem = ''
     }
     
