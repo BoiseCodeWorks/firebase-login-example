@@ -7,6 +7,9 @@
 </head>
 
 <body ng-controller="AuthController as ac">
+    
+    <button ng-click="facebookLogin()">LOGIN WITH Facebook</button>
+    
     <form ng-submit="submitForm()" ng-show="!member">
         <div class="form-group">
             <label for="email">Email:</label>
