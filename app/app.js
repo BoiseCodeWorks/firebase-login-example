@@ -15,7 +15,14 @@ app.controller('AuthController', function($scope, FBREF){
             console.log(err);
             return;
         } 
-        console.log(authData);        
+        console.log(authData);
+        var userToSave = {
+            username: $scope.user.email,
+            reputation: 0,
+            created: Date.now()
+        }
+        //THis LINE SAVES THE USER INFO INTO THE FIREBASE DB
+        db.child('users').child(authData.uid).update(userToSave)
     }
     
     
